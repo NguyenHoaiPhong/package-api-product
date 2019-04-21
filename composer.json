@@ -1,0 +1,23 @@
+{
+    "name": "api/package-api-product",
+    "description": "Create overview sample can intergrate other project",
+    "keywords": [
+        "api",
+        "laravel 5 package sample"
+    ],
+    "authors": [
+        {
+            "name": "Nhom A",
+            "email": "nguyenhoaiphong0997@gmail.com",
+        }
+    ],
+    "license": "MIT",
+    "require": {
+    },
+    "autoload": {
+        "psr-4": {
+            "Api\\Product\\": "/"
+        }
+    },
+    "minimum-stability": "dev"
+}

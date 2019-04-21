@@ -1,6 +1,6 @@
 <?php
 
-namespace Foostart\Sample;
+namespace Foostart\product;
 
 use Illuminate\Support\ServiceProvider;
 use LaravelAcl\Authentication\Classes\Menu\SentryMenuFactory;
@@ -8,7 +8,7 @@ use URL,
     Route;
 use Illuminate\Http\Request;
 
-class SampleServiceProvider extends ServiceProvider {
+class ProductServiceProvider extends ServiceProvider {
 
     /**
      * Bootstrap the application services.
@@ -21,7 +21,7 @@ class SampleServiceProvider extends ServiceProvider {
 //        $this->generateContextKey();
 
         // load view
-        $this->loadViewsFrom(__DIR__ . '/Views', 'package-sample');
+        $this->loadViewsFrom(__DIR__ . '/Views', 'package-product');
 
         // include view composers
         require __DIR__ . "/composers.php";
@@ -51,18 +51,18 @@ class SampleServiceProvider extends ServiceProvider {
 
     /**
      * Public config to system
-     * @source: vendor/foostart/package-sample/config
+     * @source: vendor/foostart/package-product/config
      * @destination: config/
      */
     protected function publishConfig() {
         $this->publishes([
-            __DIR__ . '/config/package-sample.php' => config_path('package-sample.php'),
+            __DIR__ . '/config/package-product.php' => config_path('package-product.php'),
                 ], 'config');
     }
 
     /**
      * Public language to system
-     * @source: vendor/foostart/package-sample/lang
+     * @source: vendor/foostart/package-product/lang
      * @destination: resources/lang
      */
     protected function publishLang() {
@@ -73,19 +73,19 @@ class SampleServiceProvider extends ServiceProvider {
 
     /**
      * Public view to system
-     * @source: vendor/foostart/package-sample/Views
-     * @destination: resources/views/vendor/package-sample
+     * @source: vendor/foostart/package-product/Views
+     * @destination: resources/views/vendor/package-product
      */
     protected function publishViews() {
 
         $this->publishes([
-            __DIR__ . '/Views' => base_path('resources/views/vendor/package-sample'),
+            __DIR__ . '/Views' => base_path('resources/views/vendor/package-product'),
         ]);
     }
 
     protected function publishAssets() {
         $this->publishes([
-            __DIR__ . '/public' => public_path('packages/foostart/package-sample'),
+            __DIR__ . '/public' => public_path('packages/api/package-product'),
         ]);
     }
 

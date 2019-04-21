@@ -1,14 +1,14 @@
 <!------------------------------------------------------------------------------
-| List of elements in sample form
+| List of elements in product form
 |------------------------------------------------------------------------------->
 
-{!! Form::open(['route'=>['samples.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
+{!! Form::open(['route'=>['products.post', 'id' => @$item->id],  'files'=>true, 'method' => 'post'])  !!}
 
     <!--BUTTONS-->
     <div class='btn-form'>
         <!-- DELETE BUTTON -->
         @if($item)
-            <a href="{!! URL::route('samples.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
+            <a href="{!! URL::route('products.delete',['id' => @$item->id, '_token' => csrf_token()]) !!}"
             class="btn btn-danger pull-right margin-left-5 delete">
                 {!! trans($plang_admin.'.buttons.delete') !!}
             </a>
@@ -52,15 +52,15 @@
         <!--MENU 1-->
         <div id="menu_1" class="tab-pane fade in active">
 
-            <!--SAMPLE NAME-->
+            <!--product NAME-->
             @include('package-category::admin.partials.input_text', [
-            'name' => 'sample_name',
+            'name' => 'product_name',
             'label' => trans($plang_admin.'.labels.name'),
-            'value' => @$item->sample_name,
+            'value' => @$item->product_name,
             'description' => trans($plang_admin.'.descriptions.name'),
             'errors' => $errors,
             ])
-            <!--/SAMPLE NAME-->
+            <!--/product NAME-->
 
             <!-- LIST OF CATEGORIES -->
             @include('package-category::admin.partials.select_single', [
@@ -78,51 +78,51 @@
 
         <!--MENU 2-->
         <div id="menu_2" class="tab-pane fade">
-            <!--SAMPLE OVERVIEW-->
+            <!--product OVERVIEW-->
             @include('package-category::admin.partials.textarea', [
-            'name' => 'sample_overview',
+            'name' => 'product_overview',
             'label' => trans($plang_admin.'.labels.overview'),
-            'value' => @$item->sample_overview,
+            'value' => @$item->product_overview,
             'description' => trans($plang_admin.'.descriptions.overview'),
             'tinymce' => false,
             'errors' => $errors,
             ])
-            <!--/SAMPLE OVERVIEW-->
+            <!--/product OVERVIEW-->
 
-            <!--SAMPLE DESCRIPTION-->
+            <!--product DESCRIPTION-->
             @include('package-category::admin.partials.textarea', [
-            'name' => 'sample_description',
+            'name' => 'product_description',
             'label' => trans($plang_admin.'.labels.description'),
-            'value' => @$item->sample_description,
+            'value' => @$item->product_description,
             'description' => trans($plang_admin.'.descriptions.description'),
             'rows' => 50,
             'tinymce' => true,
             'errors' => $errors,
             ])
-            <!--/SAMPLE DESCRIPTION-->
+            <!--/product DESCRIPTION-->
         </div>
 
         <!--MENU 3-->
         <div id="menu_3" class="tab-pane fade">
-            <!--SAMPLE IMAGE-->
+            <!--product IMAGE-->
             @include('package-category::admin.partials.input_image', [
-            'name' => 'sample_image',
+            'name' => 'product_image',
             'label' => trans($plang_admin.'.labels.image'),
-            'value' => @$item->sample_image,
+            'value' => @$item->product_image,
             'description' => trans($plang_admin.'.descriptions.image'),
             'errors' => $errors,
             ])
-            <!--/SAMPLE IMAGE-->
+            <!--/product IMAGE-->
 
-            <!--SAMPLE FILES-->
+            <!--product FILES-->
             @include('package-category::admin.partials.input_files', [
                 'name' => 'files',
                 'label' => trans($plang_admin.'.labels.files'),
-                'value' => @$item->sample_files,
+                'value' => @$item->product_files,
                 'description' => trans($plang_admin.'.descriptions.files'),
                 'errors' => $errors,
             ])
-            <!--/SAMPLE FILES-->
+            <!--/product FILES-->
         </div>
 
     </div>
@@ -137,5 +137,5 @@
 
 {!! Form::close() !!}
 <!------------------------------------------------------------------------------
-| End list of elements in sample form
+| End list of elements in product form
 |------------------------------------------------------------------------------>

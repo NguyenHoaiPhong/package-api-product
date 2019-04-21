@@ -5,9 +5,9 @@ use Illuminate\Session\TokenMismatchException;
 /**
  * FRONT
  */
-Route::get('sample', [
-    'as' => 'sample',
-    'uses' => 'Foostart\Sample\Controllers\Front\SampleFrontController@index'
+Route::get('product', [
+    'as' => 'product',
+    'uses' => 'Foostart\Product\Controllers\Front\ProductFrontController@index'
 ]);
 
 
@@ -17,17 +17,17 @@ Route::get('sample', [
 Route::group(['middleware' => ['web']], function () {
 
     Route::group(['middleware' => ['admin_logged', 'can_see', 'in_context'],
-                  'namespace' => 'Foostart\Sample\Controllers\Admin',
+                  'namespace' => 'Foostart\Product\Controllers\Admin',
         ], function () {
 
         /*
           |-----------------------------------------------------------------------
-          | Manage sample
+          | Manage product
           |-----------------------------------------------------------------------
-          | 1. List of samples
-          | 2. Edit sample
-          | 3. Delete sample
-          | 4. Add new sample
+          | 1. List of products
+          | 2. Edit product
+          | 3. Delete product
+          | 4. Add new product
           | 5. Manage configurations
           | 6. Manage languages
           |
@@ -36,75 +36,75 @@ Route::group(['middleware' => ['web']], function () {
         /**
          * list
          */
-        Route::get('admin/samples/list', [
-            'as' => 'samples.list',
-            'uses' => 'SampleAdminController@index'
+        Route::get('admin/products/list', [
+            'as' => 'products.list',
+            'uses' => 'ProductAdminController@index'
         ]);
 
         /**
          * edit-add
          */
-        Route::get('admin/samples/edit', [
-            'as' => 'samples.edit',
-            'uses' => 'SampleAdminController@edit'
+        Route::get('admin/products/edit', [
+            'as' => 'products.edit',
+            'uses' => 'ProductAdminController@edit'
         ]);
 
         /**
          * copy
          */
-        Route::get('admin/samples/copy', [
-            'as' => 'samples.copy',
-            'uses' => 'SampleAdminController@copy'
+        Route::get('admin/products/copy', [
+            'as' => 'products.copy',
+            'uses' => 'ProductAdminController@copy'
         ]);
 
         /**
          * post
          */
-        Route::post('admin/samples/edit', [
-            'as' => 'samples.post',
-            'uses' => 'SampleAdminController@post'
+        Route::post('admin/products/edit', [
+            'as' => 'products.post',
+            'uses' => 'ProductAdminController@post'
         ]);
 
         /**
          * delete
          */
-        Route::get('admin/samples/delete', [
-            'as' => 'samples.delete',
-            'uses' => 'SampleAdminController@delete'
+        Route::get('admin/products/delete', [
+            'as' => 'products.delete',
+            'uses' => 'ProductAdminController@delete'
         ]);
 
         /**
          * trash
          */
-         Route::get('admin/samples/trash', [
-            'as' => 'samples.trash',
-            'uses' => 'SampleAdminController@trash'
+         Route::get('admin/products/trash', [
+            'as' => 'products.trash',
+            'uses' => 'ProductAdminController@trash'
         ]);
 
         /**
          * configs
         */
-        Route::get('admin/samples/config', [
-            'as' => 'samples.config',
-            'uses' => 'SampleAdminController@config'
+        Route::get('admin/products/config', [
+            'as' => 'products.config',
+            'uses' => 'ProductAdminController@config'
         ]);
 
-        Route::post('admin/samples/config', [
-            'as' => 'samples.config',
-            'uses' => 'SampleAdminController@config'
+        Route::post('admin/products/config', [
+            'as' => 'products.config',
+            'uses' => 'ProductAdminController@config'
         ]);
 
         /**
          * language
         */
-        Route::get('admin/samples/lang', [
-            'as' => 'samples.lang',
-            'uses' => 'SampleAdminController@lang'
+        Route::get('admin/products/lang', [
+            'as' => 'products.lang',
+            'uses' => 'ProductAdminController@lang'
         ]);
 
-        Route::post('admin/samples/lang', [
-            'as' => 'samples.lang',
-            'uses' => 'SampleAdminController@lang'
+        Route::post('admin/products/lang', [
+            'as' => 'products.lang',
+            'uses' => 'ProductAdminController@lang'
         ]);
 
     });

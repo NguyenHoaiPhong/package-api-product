@@ -46,9 +46,9 @@
 
                     <!--BODY-->
                     <div class="panel-body">
-                        {!! Form::open(['route'=>['samples.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
+                        {!! Form::open(['route'=>['products.delete', 'id' => @$item->id], 'method' => 'get'])  !!}
 
-                            @include('package-sample::admin.sample-item')
+                            @include('package-product::admin.product-item')
 
                             {!! csrf_field(); !!}
 
@@ -62,7 +62,7 @@
 
             <!--SEARCH-->
             <div class="col-md-4">
-                @include('package-sample::admin.sample-search')
+                @include('package-product::admin.product-search')
             </div>
             <!--/SEARCH-->
 

@@ -1,9 +1,9 @@
-<?php namespace Foostart\Sample\Models;
+<?php namespace Foostart\Product\Models;
 
 use Foostart\Category\Library\Models\FooModel;
 use Illuminate\Database\Eloquent\Model;
 
-class Sample extends FooModel {
+class Product extends FooModel {
 
     /**
      * @table categories
@@ -20,26 +20,26 @@ class Sample extends FooModel {
     public function setConfigs() {
 
         //table name
-        $this->table = 'samples';
+        $this->table = 'products';
 
         //list of field in table
         $this->fillable = [
-            'sample_name',
+            'product_name',
             'category_id',
             'user_id',
             'user_full_name',
             'user_email',
-            'sample_overview',
-            'sample_description',
-            'sample_image',
-            'sample_files',
-            'sample_status',
+            'product_overview',
+            'product_description',
+            'product_image',
+            'product_files',
+            'product_status',
         ];
 
         //list of fields for inserting
         $this->fields = [
-            'sample_name' => [
-                'name' => 'sample_name',
+            'product_name' => [
+                'name' => 'product_name',
                 'type' => 'Text',
             ],
             'category_id' => [
@@ -58,19 +58,19 @@ class Sample extends FooModel {
                 'name' => 'email',
                 'type' => 'Text',
             ],
-            'sample_overview' => [
-                'name' => 'sample_overview',
+            'product_overview' => [
+                'name' => 'product_overview',
                 'type' => 'Text',
             ],
-            'sample_description' => [
-                'name' => 'sample_description',
+            'product_description' => [
+                'name' => 'product_description',
                 'type' => 'Text',
             ],
-            'sample_image' => [
-                'name' => 'sample_image',
+            'product_image' => [
+                'name' => 'product_image',
                 'type' => 'Text',
             ],
-            'sample_files' => [
+            'product_files' => [
                 'name' => 'files',
                 'type' => 'Json',
             ],
@@ -78,21 +78,21 @@ class Sample extends FooModel {
 
         //check valid fields for inserting
         $this->valid_insert_fields = [
-            'sample_name',
+            'product_name',
             'user_id',
             'category_id',
             'user_full_name',
             'updated_at',
-            'sample_overview',
-            'sample_description',
-            'sample_image',
-            'sample_files',
-            'sample_status',
+            'product_overview',
+            'product_description',
+            'product_image',
+            'product_files',
+            'product_status',
         ];
 
         //check valid fields for ordering
         $this->valid_ordering_fields = [
-            'sample_name',
+            'product_name',
             'updated_at',
             $this->field_status,
         ];
@@ -103,13 +103,13 @@ class Sample extends FooModel {
         ];
 
         //primary key
-        $this->primaryKey = 'sample_id';
+        $this->primaryKey = 'product_id';
 
         //the number of items on page
         $this->perPage = 10;
 
         //item status
-        $this->field_status = 'sample_status';
+        $this->field_status = 'product_status';
 
     }
 
@@ -139,9 +139,9 @@ class Sample extends FooModel {
     }
 
     /**
-     * Get a sample by {id}
+     * Get a product by {id}
      * @param ARRAY $params list of parameters
-     * @return OBJECT sample
+     * @return OBJECT product
      */
     public function selectItem($params = array(), $key = NULL) {
 
@@ -192,9 +192,9 @@ class Sample extends FooModel {
                 {
                     switch($column)
                     {
-                        case 'sample_name':
+                        case 'product_name':
                             if (!empty($value)) {
-                                $elo = $elo->where($this->table . '.sample_name', '=', $value);
+                                $elo = $elo->where($this->table . '.product_name', '=', $value);
                             }
                             break;
                         case 'status':
@@ -205,9 +205,9 @@ class Sample extends FooModel {
                         case 'keyword':
                             if (!empty($value)) {
                                 $elo = $elo->where(function($elo) use ($value) {
-                                    $elo->where($this->table . '.sample_name', 'LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.sample_description','LIKE', "%{$value}%")
-                                    ->orWhere($this->table . '.sample_overview','LIKE', "%{$value}%");
+                                    $elo->where($this->table . '.product_name', 'LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.product_description','LIKE', "%{$value}%")
+                                    ->orWhere($this->table . '.product_overview','LIKE', "%{$value}%");
                                 });
                             }
                             break;
@@ -233,7 +233,7 @@ class Sample extends FooModel {
     public function createSelect($elo) {
 
         $elo = $elo->select($this->table . '.*',
-                            $this->table . '.sample_id as id'
+                            $this->table . '.product_id as id'
                 );
 
         return $elo;
@@ -263,20 +263,20 @@ class Sample extends FooModel {
         }
         $field_status = $this->field_status;
 
-        $sample = $this->selectItem($params);
+        $product = $this->selectItem($params);
 
-        if (!empty($sample)) {
+        if (!empty($product)) {
             $dataFields = $this->getDataFields($params, $this->fields);
 
             foreach ($dataFields as $key => $value) {
-                $sample->$key = $value;
+                $product->$key = $value;
             }
 
-            $sample->$field_status = $this->status['publish'];
+            $product->$field_status = $this->status['publish'];
 
-            $sample->save();
+            $product->save();
 
-            return $sample;
+            return $product;
         } else {
             return NULL;
         }
@@ -286,7 +286,7 @@ class Sample extends FooModel {
     /**
      *
      * @param ARRAY $params list of parameters
-     * @return OBJECT sample
+     * @return OBJECT product
      */
     public function insertItem($params = []) {
 

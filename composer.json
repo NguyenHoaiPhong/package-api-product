@@ -1,5 +1,5 @@
 {
-    "name": "api/package-api-product",
+    "name": "nhomA/package-api-product",
     "description": "Create overview sample can intergrate other project",
     "keywords": [
         "api",
@@ -8,7 +8,7 @@
     "authors": [
         {
             "name": "Nhom A",
-            "email": "nguyenhoaiphong0997@gmail.com",
+            "email": "nguyenhoaiphong0997@gmail.com"
         }
     ],
     "license": "MIT",
